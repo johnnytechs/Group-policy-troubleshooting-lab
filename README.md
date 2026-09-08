@@ -6,6 +6,8 @@
 
 I verified that Marcus Johnson was located in the `HelpDesk-Lab` OU and confirmed that the `HelpDesk - Control Panel Restriction` GPO was configured to prohibit access to Control Panel and PC settings.
 
+<img width="1456" height="1080" alt="01-marcus-helpdesk-ou png" src="https://github.com/user-attachments/assets/739349f6-3055-455e-95ae-c2bef0743a19" />
+
 **2. Reproduce the Issue**
 
 I logged into the Windows 11 domain client as Marcus and used `whoami` to verify the account. Control Panel was still accessible, confirming that the expected policy was not being enforced.
