@@ -6,9 +6,11 @@
 
 I verified that Marcus Johnson was located in the `HelpDesk-Lab` OU and confirmed that the `HelpDesk - Control Panel Restriction` GPO was configured to prohibit access to Control Panel and PC settings.
 
+
 <img width="1456" height="1080" alt="01-marcus-helpdesk-ou png" src="https://github.com/user-attachments/assets/739349f6-3055-455e-95ae-c2bef0743a19" />
 
 <img width="1590" height="989" alt="02-control-panel-gpo-enabled png" src="https://github.com/user-attachments/assets/7d6daa2c-b948-486b-a45d-5cd7e8d884e7" />
+
 
 **2. Reproduce the Issue**
 
@@ -16,9 +18,11 @@ I logged into the Windows 11 domain client as Marcus and used `whoami` to verify
 
 **3. Investigate with gpresult**
 
+
 I ran `gpresult /r` and found `N/A` under Applied Group Policy Objects. This confirmed that the expected GPO was not reaching the user.
 
 <img width="1172" height="925" alt="03-control-panel-still-accessible-annotated" src="https://github.com/user-attachments/assets/eab6c475-8907-46d6-934e-7b725f433945" />
+
 
 **4. Identify the Root Cause**
 
@@ -26,11 +30,13 @@ I inspected the `HelpDesk-Lab` OU in Group Policy Management and discovered that
 
 <img width="1728" height="592" alt="04-gpresult-policy-not-applied png" src="https://github.com/user-attachments/assets/dadeaa7d-50e4-4665-9c92-6bd1d7b5362d" />
 
+
 **5. Apply the Fix**
 
 I re-enabled the `HelpDesk - Control Panel Restriction` GPO link and ran `gpupdate /force` on the Windows 11 client to refresh Group Policy.
 
 <img width="1360" height="752" alt="05-gpo-link-disabled-root-cause png" src="https://github.com/user-attachments/assets/98cb6662-0477-45fe-8522-856bc8d19b3b" />
+
 
 **6. Verify the Resolution**
 
